@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 6.1.0
+- Bump `railties` and `activesupport` to provide Rails 8.0.0.beta1 support
+- Update README with notes for serializing backup codes when using MySQL and Rails >= 7.2
+
 ## 6.0.0
 
 **Breaking Changes**
