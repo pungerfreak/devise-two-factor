@@ -249,9 +249,24 @@ end
 # model
 class User < ApplicationRecord
   devise :two_factor_backupable
-  serialize :otp_backup_codes, Array
+
+  # See note for serialization of `otp_backup_codes` below
 end
 ```
+
+##### Rails >= 7.2 - MySQL only
+
+Add `serialize :otp_backup_codes, type: Array, coder: JSON` to your `User` model
+
+Alternatively, you can forego the `coder` keyword argument and configure a default serializer in your `config/application.rb` or environment-specific configuration
+
+```
+config.active_record.default_column_serializer = JSON
+```
+
+##### Rails < 7.2 - MySQL only
+
+Add `serialize :otp_backup_codes, Array` to your `User` model.
 
 ### Generation
 
